@@ -109,9 +109,11 @@ const schema = new mongoose.Schema({
 ```javascript
 const mongoose = require('mongoose');
 
+const MONGO_URI = 'mongodb+srv://USERNAME:PASSWORD@cluster0.mongodb.net/DATABASE_NAME?retryWrites=true&w=majority';
+
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
+    const conn = await mongoose.connect(MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
@@ -125,11 +127,6 @@ const connectDB = async () => {
 module.exports = connectDB;
 ```
 
-### Environment Variables
-Create a `.env` file:
-```
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority
-```
 
 ### Connection Options
 - `useNewUrlParser`: Use new URL parser
